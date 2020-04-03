@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./frontend",
+    "paths": {
+      "~*": ["./*"]
+    }
+  },
+  "include": ["frontend/**/*"]
+}

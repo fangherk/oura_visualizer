@@ -5,3 +5,7 @@ scratch/
 /.credentials.json
 .DS_Store
 __pycache__/
+node_modules/
+.log/
+dist/
+.cache/
