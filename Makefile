@@ -4,5 +4,5 @@ lint:
 	black .
 
 .PHONY: dev
-dev:
-	yarn parcel frontend/index.html
+frontend:
+	yarn parcel static/index.html

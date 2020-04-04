@@ -11,7 +11,9 @@ Run redis with the defaults locally (planning to add docker, so this doesn't nee
 `dagster pipeline execute -f batch.py -n get_all_data`
 
 The frontend uses react and parcel, which packages everything out of the box.
-Run parcel `frontend/index.html`.
+For running the frontend, use `make frontend`.
+
+For running the flask server, just use `python server.py`.
 
 ## Plan
 
