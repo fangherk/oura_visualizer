@@ -10,7 +10,7 @@ r = redis.Redis(host="localhost", port=6379, db=0)
 
 if not r.get("access_token"):
     access_token = get_access_token()
-    r.set("access_token", access_token)
+    r.set("access_token", access_token, ex=86400)
 
 TOKEN = r.get("access_token").decode("utf-8")
 
@@ -28,19 +28,33 @@ def get_endpoint_url(params: str, start: date, end: date) -> str:
     return url
 
 
-start = date(2000, 1, 1)
-end = date(2020, 4, 1)
-
-
-@solid
-def get_data(context):
-    """ Extract data. """
+def get_data_for_dates(start, end):
+    """
+    Get sleep, activity, and readiness data for a start - end dates.
+    Data should be returned as a map of
+    {
+      'sleep' : List[Dict[Any]],
+      'activity' : List[Dict[Any]],
+      'readiness' : List[Dict[Any]],
+    }
+    """
     sleep_url = get_endpoint_url(SLEEP_PARAMS, start, end)
     activity_url = get_endpoint_url(ACTIVITY_PARAMS, start, end)
     readiness_url = get_endpoint_url(READINESS_PARAMS, start, end)
     data = {}
     for url in [sleep_url, activity_url, readiness_url]:
-        data.update(requests.get(url).json())
+        response = requests.get(url).json()
+        data.update(response)
+    return data
+
+
+@solid
+def get_data(context):
+    """ Extract data. """
+    start = date(2000, 1, 1)
+    end = date(2020, 4, 1)
+
+    data = get_data_for_dates(start, end)
     for key, values in data.items():
         context.log.info("Found {num} {key} summaries".format(num=len(values), key=key))
     return data

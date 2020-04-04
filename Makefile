@@ -5,4 +5,20 @@ lint:
 
 .PHONY: dev
 frontend:
-	yarn parcel static/index.html
+	@ echo "Start parcel"
+	yarn parcel static/index.html &
+
+.PHONY: backend
+backend:
+	@echo "Start python"
+	python server.py &
+
+.PHONY: redis
+redis:
+	@echo "Start redis"
+	redis-server &
+
+
+.PHONY: all
+all: frontend backend redis
+	@echo "Everything is up!"

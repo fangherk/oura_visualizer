@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "baseUrl": "./frontend",
+    "baseUrl": "./static",
     "paths": {
       "~*": ["./*"]
     },
@@ -11,5 +11,5 @@
     "module": "commonjs",
     "target": "es6"
   },
-  "include": ["frontend/**/*"]
+  "include": ["static/**/*"]
 }

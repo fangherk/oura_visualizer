@@ -8,12 +8,20 @@ Curious to see what it would be like to build a simple dashboard displaying some
 
 Add a `.credentials.json` with `CLIENT_ID` and `CLIENT_SECRET` found on the Oura app.
 Run redis with the defaults locally (planning to add docker, so this doesn't need to be done).
+
+The batch pipeline can be run as:
 `dagster pipeline execute -f batch.py -n get_all_data`
+
+To run redis, run `make redis`.
 
 The frontend uses react and parcel, which packages everything out of the box.
 For running the frontend, use `make frontend`.
 
-For running the flask server, just use `python server.py`.
+For running the flask server, just use `make backend`.
+
+Alternatively, just run `make all`.
+
+The current result can either be found on http://localhost:5000/ or http://localhost:1234/ !
 
 ## Plan
 
@@ -25,3 +33,4 @@ For running the flask server, just use `python server.py`.
 ## What I Learned
 
 1. Oauth 2 requires a lot of back and forth among user, app, and auth server.
+2. Makefiles only like tabs
