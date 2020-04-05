@@ -1,4 +1,6 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
 interface Props {
   title: string;
@@ -11,10 +13,10 @@ class Card extends React.Component<Props> {
   }
   render() {
     return (
-      <div className="card">
-        <h2> {this.props.title} </h2>
-        <p> {this.props.value} </p>
-      </div>
+      <Paper className="paper">
+        <Typography variant="h4">{this.props.title}</Typography>
+        <Typography variant="h1">{this.props.value}</Typography>
+      </Paper>
     );
   }
 }

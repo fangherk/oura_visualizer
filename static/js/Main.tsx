@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import Grid from "@material-ui/core/Grid";
 
 interface Score {
   scores: any;
@@ -18,9 +19,17 @@ class Main extends React.Component<{}, Score> {
   render() {
     return (
       <div className="Main">
-        <Card title="Sleep" value={this.state.scores["sleep"]} />
-        <Card title="Readiness" value={this.state.scores["readiness"]} />
-        <Card title="Activity" value={this.state.scores["activity"]} />
+        <Grid container justify="space-between" alignItems="stretch">
+          <Grid item xs={4}>
+            <Card title="Sleep" value={this.state.scores["sleep"]} />
+          </Grid>
+          <Grid item xs={4}>
+            <Card title="Readiness" value={this.state.scores["readiness"]} />
+          </Grid>
+          <Grid item xs={4}>
+            <Card title="Activity" value={this.state.scores["activity"]} />
+          </Grid>
+        </Grid>
       </div>
     );
   }
