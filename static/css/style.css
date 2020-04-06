@@ -3,3 +3,9 @@
   margin: 2em;
   padding: 2em;
 }
+
+svg {
+  overflow: visible;
+  display: block;
+  margin: auto;
+}
