@@ -20,12 +20,17 @@ frontend:
 .PHONY: backend
 ### backend -- start the backend server
 backend:
-	python backend/server.py &
+	python -m backend.server &
 
 .PHONY: redis
 ### redis -- start redis server
 redis:
 	redis-server &
+
+.PHONY: test
+### test -- test python code
+test:
+	pytest tests
 	
 .PHONY: all
 ### all - start everything

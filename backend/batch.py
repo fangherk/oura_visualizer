@@ -4,12 +4,13 @@ import requests
 
 import redis
 from dagster import pipeline, solid
-from oura_auth import get_access_token
+
+from . import oura_auth
 
 r = redis.Redis(host="localhost", port=6379, db=0)
 
 if not r.get("access_token"):
-    access_token = get_access_token()
+    access_token = oura_auth.get_access_token()
     r.set("access_token", access_token, ex=86400)
 
 TOKEN = r.get("access_token").decode("utf-8")
