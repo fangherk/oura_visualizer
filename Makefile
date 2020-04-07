@@ -20,7 +20,7 @@ frontend:
 .PHONY: backend
 ### backend -- start the backend server
 backend:
-	python server.py &
+	python backend/server.py &
 
 .PHONY: redis
 ### redis -- start redis server

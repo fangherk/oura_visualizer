@@ -34,3 +34,4 @@ The current result can either be found on http://localhost:5000/ or http://local
 
 1. Oauth 2 requires a lot of back and forth among user, app, and auth server.
 2. Makefiles only like tabs
+3. Patching the function directly doesn't seem to work, so path where it is pointed to. https://docs.python.org/3/library/unittest.mock.html#where-to-patch
