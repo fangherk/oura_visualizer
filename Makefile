@@ -1,4 +1,9 @@
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := help
+
+### help - Help docs for this Makefile
+.PHONY: help
+help :
+	@sed -n '/^###/p' Makefile
 
 .PHONY: install
 ### install -- install packages using poetry and yarn
@@ -7,7 +12,7 @@ install:
 	yarn install
 
 .PHONY: lint
-### lint -- lint the directories 
+### lint -- lint the directories, requires fd to be installed
 lint:
 	fd . -t f -E '*\.{py,lock,toml}' -E 'Makefile' | xargs yarn prettier --write
 	black .
@@ -15,33 +20,24 @@ lint:
 .PHONY: dev
 ### frontend -- start the parcel server
 frontend:
-	yarn parcel static/index.html &
+	yarn parcel static/index.html
 
 .PHONY: backend
 ### backend -- start the backend server
 backend:
-	python -m backend.server &
+	python -m backend.server
 
 .PHONY: redis
 ### redis -- start redis server
 redis:
-	redis-server &
+	redis-server
 
 .PHONY: test
 ### test -- test python code
 test:
 	pytest tests
-	
-.PHONY: all
-### all - start everything
-all: frontend backend redis
 
 .PHONY: clean
 ### clean - remove generated files
 clean:
 	rm -r dist/
-
-.PHONY: help
-help : Makefile
-	@sed -n 's/^###/p' $<
-

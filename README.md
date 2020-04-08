@@ -12,14 +12,14 @@ Run redis with the defaults locally (planning to add docker, so this doesn't nee
 The batch pipeline can be run as:
 `dagster pipeline execute -f batch.py -n get_all_data`
 
+To start, run `make install`.
+
 To run redis, run `make redis`.
 
 The frontend uses react and parcel, which packages everything out of the box.
 For running the frontend, use `make frontend`.
 
 For running the flask server, just use `make backend`.
-
-Alternatively, just run `make all`.
 
 The current result can either be found on http://localhost:5000/ or http://localhost:1234/ !
 
