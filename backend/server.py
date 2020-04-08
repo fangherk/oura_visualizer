@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 from flask import Flask, jsonify
 
-from . import batch
+from backend import batch
 
 app = Flask(__name__, template_folder="../dist", static_folder="../dist", static_url_path="")
 

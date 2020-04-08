@@ -9,19 +9,19 @@ Curious to see what it would be like to build a simple dashboard displaying some
 Add a `.credentials.json` with `CLIENT_ID` and `CLIENT_SECRET` found on the Oura app.
 Run redis with the defaults locally (planning to add docker, so this doesn't need to be done).
 
-The batch pipeline can be run as:
-`dagster pipeline execute -f batch.py -n get_all_data`
-
-To start, run `make install`.
-
-To run redis, run `make redis`.
-
-The frontend uses react and parcel, which packages everything out of the box.
-For running the frontend, use `make frontend`.
-
-For running the flask server, just use `make backend`.
+To install packages, run `make install`.
+To start redis, run `make redis`.
+To start the frontend, run `make frontend`.
+To start the flask server, run `make backend`.
+To start the batch pipeline, run: `make batch`.
 
 The current result can either be found on http://localhost:5000/ or http://localhost:1234/ !
+
+
+## Dependencies
+1. Python 3+, with poetry installed -- for server auth + data
+2. Yarn -- for the display
+3. Docker -- for Redis
 
 ## Plan
 

@@ -3,9 +3,8 @@ from datetime import date
 import requests
 
 import redis
+from backend import oura_auth
 from dagster import pipeline, solid
-
-from . import oura_auth
 
 r = redis.Redis(host="localhost", port=6379, db=0)
 

@@ -17,6 +17,11 @@ lint:
 	fd . -t f -E '*\.{py,lock,toml}' -E 'Makefile' | xargs yarn prettier --write
 	black .
 
+.PHONY: batch
+### batch -- run the batch pipeline
+batch:
+	dagster pipeline execute -f backend/batch.py -n get_all_data
+
 .PHONY: dev
 ### frontend -- start the parcel server
 frontend:
@@ -30,7 +35,7 @@ backend:
 .PHONY: redis
 ### redis -- start redis server
 redis:
-	redis-server
+	docker-compose up
 
 .PHONY: test
 ### test -- test python code
